@@ -6,12 +6,10 @@ import {
   Button,
   Snackbar,
   Typography,
-  AppBar,
-  Toolbar,
   Container,
-  Grid,
 } from "@mui/material";
-import BackgroundImg from "./assets/background.jpg";
+import Grid from '@mui/material/Grid';
+import BackgroundImg from "./assets/background.webp";
 import { Heart, Leaf, Sprout } from "lucide-react";
 import "./App.css";
 
@@ -33,7 +31,7 @@ export default function UnderConstruction() {
   const [snackbarMsg, setSnackbarMsg] = useState("");
   const isMobile = useIsMobile();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const result = await emailjs.send(
@@ -60,7 +58,8 @@ export default function UnderConstruction() {
       <Box
         sx={{
           width: "100vw",
-          minHeight: "100vh",
+          height: "85dvh",
+          minHeight: 650, // fallback for older browsers
           backgroundImage: `url(${BackgroundImg})`,
           backgroundSize: "cover",
           backgroundPosition: "bottom center", // ✅ lock bottom
@@ -73,7 +72,7 @@ export default function UnderConstruction() {
       >
         <Box
           sx={{
-            position: "absolute",
+            position: "relative",
             top: -2,
             left: -2,
             zIndex: 10,
@@ -162,7 +161,7 @@ export default function UnderConstruction() {
                   input: {
                     autoComplete: "off", // ✅ proper way now
                   },
-                }}                required
+                }} required
                 placeholder="Enter your email"
                 variant="outlined"
                 value={email}
@@ -227,7 +226,7 @@ export default function UnderConstruction() {
         <Box sx={{ py: 4, borderTop: "1px solid var(--color-primary)" }}>
           <Container>
             <Grid container spacing={4} justifyContent="center" textAlign="center">
-              <Grid item xs={4} md={4}>
+              <Grid size={{ xs: 4, sm: 4 }} >
                 <Box display="flex" flexDirection="column" alignItems="center">
                   <Box
                     className="icon-circle"
@@ -245,7 +244,8 @@ export default function UnderConstruction() {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={4} md={4}>
+
+              <Grid size={{ xs: 4, sm: 4 }} >
                 <Box display="flex" flexDirection="column" alignItems="center">
                   <Box
                     className="icon-circle"
@@ -263,7 +263,8 @@ export default function UnderConstruction() {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={4} md={4}>
+
+              <Grid size={{ xs: 4, sm: 4 }} >
                 <Box display="flex" flexDirection="column" alignItems="center">
                   <Box
                     className="icon-circle"
@@ -294,12 +295,13 @@ export default function UnderConstruction() {
               sx={{
                 opacity: 0.8,
                 fontSize: {
-                  xs: "0.65rem", // very small on mobile
+                  xs: "0.65rem",
                   sm: "0.75rem",
-                  md: "0.85rem", // default on desktop
+                  md: "0.85rem",
                 },
                 lineHeight: 1.4,
-              }}            >
+              }}
+            >
               Bags of Beauty has been established in Dubai with top-of-the-line
               products since 2020.<br />
               Our products come with a long-lasting quality guarantee.<br />
