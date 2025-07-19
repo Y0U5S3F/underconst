@@ -253,7 +253,7 @@ export default function UnderConstruction() {
           <Box sx={{ py: 4, borderTop: "1px solid var(--color-primary)" }}>
             <Container>
               <Grid container spacing={4} justifyContent="center" textAlign="center">
-                <Grid item xs={4} sm={4}>
+                <Grid size={{ xs: 4, sm: 4 }}>
                   <Box display="flex" flexDirection="column" alignItems="center">
                     <Box
                       className="icon-circle"
@@ -272,7 +272,7 @@ export default function UnderConstruction() {
                   </Box>
                 </Grid>
 
-                <Grid item xs={4} sm={4}>
+                <Grid size={{ xs: 4, sm: 4 }}>
                   <Box display="flex" flexDirection="column" alignItems="center">
                     <Box
                       className="icon-circle"
@@ -291,7 +291,7 @@ export default function UnderConstruction() {
                   </Box>
                 </Grid>
 
-                <Grid item xs={4} sm={4}>
+                <Grid size={{ xs: 4, sm: 4 }}>
                   <Box display="flex" flexDirection="column" alignItems="center">
                     <Box
                       className="icon-circle"
