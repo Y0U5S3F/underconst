@@ -61,9 +61,8 @@ export default function UnderConstruction() {
 
   return (
     <Box sx={{ fontFamily: "'Roboto', sans-serif" }}>
-      {/* HERO SECTION WITH BACKGROUND */}
+      {/* HERO SECTION */}
       {!bgLoaded ? (
-        // Show loading spinner centered on screen
         <Box
           sx={{
             width: '100vw',
@@ -72,10 +71,14 @@ export default function UnderConstruction() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            bgcolor: '#fff', // optional background while loading
+            bgcolor: '#fff',
           }}
         >
-          <CircularProgress color="primary" />
+          <CircularProgress
+            sx={{
+              color: "var(--color-accent)",
+            }}
+          />
         </Box>
       ) : (
         <Box
@@ -138,9 +141,9 @@ export default function UnderConstruction() {
                 fontWeight: "bold",
                 textAlign: "center",
                 fontSize: {
-                  xs: "2.5rem",   // ~h4 on mobile
-                  sm: "2.5rem", // slightly larger on small tablets
-                  md: "3.5rem", // default h2 on desktop
+                  xs: "2.5rem",
+                  sm: "2.5rem",
+                  md: "3.5rem",
                 },
               }}
             >
@@ -183,9 +186,10 @@ export default function UnderConstruction() {
                   type="email"
                   slotProps={{
                     input: {
-                      autoComplete: "off", // ✅ proper way now
+                      autoComplete: "off",
                     },
-                  }} required
+                  }}
+                  required
                   placeholder="Enter your email"
                   variant="outlined"
                   value={email}
@@ -194,23 +198,21 @@ export default function UnderConstruction() {
                     backgroundColor: "#ffffff",
                     input: { color: "#33271a" },
                     transition: "transform 0.1s ease",
-
                     "& .MuiOutlinedInput-root": {
                       borderRadius: 0.5,
                       "& fieldset": {
-                        borderColor: "#d098a2", // Always pink
+                        borderColor: "#d098a2",
                       },
                       "&:hover fieldset": {
-                        borderColor: "#d098a2", // Pink on hover
+                        borderColor: "#d098a2",
                       },
                       "&.Mui-focused": {
-                        transform: "scale(1.005)", // Zoom animation
+                        transform: "scale(1.005)",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#d098a2", // Still pink when focused
+                        borderColor: "#d098a2",
                       },
                     },
-
                     "& label": {
                       color: "#33271a",
                     },
@@ -218,7 +220,6 @@ export default function UnderConstruction() {
                       color: "#d098a2",
                     },
                   }}
-
                 />
                 <Button
                   type="submit"
@@ -246,99 +247,100 @@ export default function UnderConstruction() {
         </Box>
       )}
 
-      {/* FOOTER SECTION WITHOUT BACKGROUND IMAGE */}
-      <Box component="footer" sx={{ bgcolor: "#ffffff", color: "#33271a" }}>
-        <Box sx={{ py: 4, borderTop: "1px solid var(--color-primary)" }}>
-          <Container>
-            <Grid container spacing={4} justifyContent="center" textAlign="center">
-              <Grid size={{ xs: 4, sm: 4 }}>
-                <Box display="flex" flexDirection="column" alignItems="center">
-                  <Box
-                    className="icon-circle"
-                    sx={{
-                      svg: { width: { xs: 20, md: 32 }, height: { xs: 20, md: 32 } },
-                    }}
-                  >
-                    <Heart color="#33271a" />
+      {/* FOOTER */}
+      {bgLoaded && (
+        <Box component="footer" sx={{ bgcolor: "#ffffff", color: "#33271a" }}>
+          <Box sx={{ py: 4, borderTop: "1px solid var(--color-primary)" }}>
+            <Container>
+              <Grid container spacing={4} justifyContent="center" textAlign="center">
+                <Grid item xs={4} sm={4}>
+                  <Box display="flex" flexDirection="column" alignItems="center">
+                    <Box
+                      className="icon-circle"
+                      sx={{
+                        svg: { width: { xs: 20, md: 32 }, height: { xs: 20, md: 32 } },
+                      }}
+                    >
+                      <Heart color="#33271a" />
+                    </Box>
+                    <Typography variant="h6" fontWeight={600} sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
+                      Cruelty Free
+                    </Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: "0.75rem", md: "1rem" } }}>
+                      Never tested on animals
+                    </Typography>
                   </Box>
-                  <Typography variant="h6" fontWeight={600} sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
-                    Cruelty Free
-                  </Typography>
-                  <Typography variant="body1" sx={{ fontSize: { xs: "0.75rem", md: "1rem" } }}>
-                    Never tested on animals
-                  </Typography>
-                </Box>
-              </Grid>
+                </Grid>
 
-              <Grid size={{ xs: 4, sm: 4 }}>
-                <Box display="flex" flexDirection="column" alignItems="center">
-                  <Box
-                    className="icon-circle"
-                    sx={{
-                      svg: { width: { xs: 18, md: 28 }, height: { xs: 18, md: 28 } },
-                    }}
-                  >
-                    <Sprout color="#33271a" />
+                <Grid item xs={4} sm={4}>
+                  <Box display="flex" flexDirection="column" alignItems="center">
+                    <Box
+                      className="icon-circle"
+                      sx={{
+                        svg: { width: { xs: 18, md: 28 }, height: { xs: 18, md: 28 } },
+                      }}
+                    >
+                      <Sprout color="#33271a" />
+                    </Box>
+                    <Typography variant="h6" fontWeight={600} sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
+                      Gluten Free
+                    </Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: "0.75rem", md: "1rem" } }}>
+                      Safe for sensitive skin
+                    </Typography>
                   </Box>
-                  <Typography variant="h6" fontWeight={600} sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
-                    Gluten Free
-                  </Typography>
-                  <Typography variant="body1" sx={{ fontSize: { xs: "0.75rem", md: "1rem" } }}>
-                    Safe for sensitive skin
-                  </Typography>
-                </Box>
-              </Grid>
+                </Grid>
 
-              <Grid size={{ xs: 4, sm: 4 }}>
-                <Box display="flex" flexDirection="column" alignItems="center">
-                  <Box
-                    className="icon-circle"
-                    sx={{
-                      svg: { width: { xs: 18, md: 28 }, height: { xs: 18, md: 28 } },
-                    }}
-                  >
-                    <Leaf color="#33271a" />
+                <Grid item xs={4} sm={4}>
+                  <Box display="flex" flexDirection="column" alignItems="center">
+                    <Box
+                      className="icon-circle"
+                      sx={{
+                        svg: { width: { xs: 18, md: 28 }, height: { xs: 18, md: 28 } },
+                      }}
+                    >
+                      <Leaf color="#33271a" />
+                    </Box>
+                    <Typography variant="h6" fontWeight={600} sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
+                      Vegan
+                    </Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: "0.75rem", md: "1rem" } }}>
+                      Plant-based ingredients only
+                    </Typography>
                   </Box>
-                  <Typography variant="h6" fontWeight={600} sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
-                    Vegan
-                  </Typography>
-                  <Typography variant="body1" sx={{ fontSize: { xs: "0.75rem", md: "1rem" } }}>
-                    Plant-based ingredients only
-                  </Typography>
-                </Box>
+                </Grid>
               </Grid>
-            </Grid>
-          </Container>
+            </Container>
+          </Box>
+
+          <Box sx={{ pb: 4 }}>
+            <Container>
+              <Typography
+                variant="body2"
+                textAlign="center"
+                color="#555"
+                sx={{
+                  opacity: 0.8,
+                  fontSize: {
+                    xs: "0.65rem",
+                    sm: "0.75rem",
+                    md: "0.85rem",
+                  },
+                  lineHeight: 1.4,
+                }}
+              >
+                Bags of Beauty has been established in Dubai with top-of-the-line
+                products since 2020.<br />
+                Our products come with a long-lasting quality guarantee.<br />
+                Contact us to learn more about this brand, and to make sure you don't
+                miss out on our special discounts. <br />
+                TM ©2023 BAGS OF BEAUTY TRADING (S.E.), All Rights Reserved.
+              </Typography>
+            </Container>
+          </Box>
         </Box>
+      )}
 
-        <Box sx={{ pb: 4 }}>
-          <Container>
-            <Typography
-              variant="body2"
-              textAlign="center"
-              color="#555"
-              sx={{
-                opacity: 0.8,
-                fontSize: {
-                  xs: "0.65rem",
-                  sm: "0.75rem",
-                  md: "0.85rem",
-                },
-                lineHeight: 1.4,
-              }}
-            >
-              Bags of Beauty has been established in Dubai with top-of-the-line
-              products since 2020.<br />
-              Our products come with a long-lasting quality guarantee.<br />
-              Contact us to learn more about this brand, and to make sure you don't
-              miss out on our special discounts. <br />
-              TM ©2023 BAGS OF BEAUTY TRADING (S.E.), All Rights Reserved.
-            </Typography>
-          </Container>
-        </Box>
-      </Box>
-
-      {/* Snackbar */}
       <Snackbar
         open={snackbarOpen}
         onClose={() => setSnackbarOpen(false)}
