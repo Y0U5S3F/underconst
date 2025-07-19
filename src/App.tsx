@@ -75,7 +75,7 @@ export default function UnderConstruction() {
             bgcolor: '#fff', // optional background while loading
           }}
         >
-          <CircularProgress />
+          <CircularProgress color="primary" />
         </Box>
       ) : (
         <Box
