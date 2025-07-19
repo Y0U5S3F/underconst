@@ -5,8 +5,10 @@
   "type": "module",
   "homepage": "https://y0u5s3f.github.io/underconst",
   "scripts": {
+    "dev": "vite",
     "build": "vite build",
-    "predeploy": "npm run build",
+    "preview": "vite preview",
+    "predeploy": "echo 'www.glossedup.ae' > dist/CNAME",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
