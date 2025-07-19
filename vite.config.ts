@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/GlossedUp/',
+  base: '/', // Use '/' for root deployment (custom domain)
 })
