@@ -128,23 +128,24 @@ export default function UnderConstruction() {
                 <Typography
                   variant="h1"
                   sx={{
-                    fontFamily: "'Playfair Display', serif", // full name for clarity
+                    fontFamily: "'Dense', sans-serif",
                     fontSize: {
-                      xs: "2.75rem", // smaller screens: elegant, not overwhelming
+                      xs: "2.75rem",
                       sm: "3.25rem",
-                      md: "4rem",    // large screens: presence without being bulky
+                      md: "4rem",
                     },
-                    fontWeight: 600, // slightly softer than "bold" (700)
-                    color: "var(--color-accent)", // elegant neutral
-                    letterSpacing: "-0.02em", // more refinement
-                    lineHeight: 1.15, // better vertical rhythm
+                    fontWeight: 600,
+                    color: "var(--color-accent)",
+                    letterSpacing: "0.05em",
+                    lineHeight: 1.1,
                     textAlign: "center",
-                    textTransform: "none", // avoid uppercase for a premium look
-                    textShadow: "0.25px 0.25px 0.5px rgba(0,0,0,0.05)", // subtle depth
+                    textTransform: "none",
+                    textShadow: "0.25px 0.25px 0.5px rgba(0,0,0,0.05)",
                   }}
                 >
                   Join our mailing list
                 </Typography>
+
 
                 <Container maxWidth="md">
                   <Typography
