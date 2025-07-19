@@ -8,10 +8,12 @@ import {
   Typography,
   Container,
   CircularProgress,
+  InputAdornment,
 } from "@mui/material";
 import Grid from '@mui/material/Grid';
-import BackgroundImg from "./assets/background.webp";
-import { Heart, Leaf, Sprout } from "lucide-react";
+import BackgroundImg from "./assets/GlossesBackground.png";
+import { Heart, Leaf, Sprout, Mail } from "lucide-react";
+import Navbar from "./Navbar"; // adjust the path if needed
 import "./App.css";
 
 const useIsMobile = (breakpoint = 768) => {
@@ -81,167 +83,145 @@ export default function UnderConstruction() {
           />
         </Box>
       ) : (
-        <Box
-          sx={{
-            width: '100vw',
-            height: '85dvh',
-            minHeight: 650,
-            backgroundImage: `url(${BackgroundImg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'bottom center',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'local',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-          }}
-        >
+        <Box>
+          <Navbar />
           <Box
             sx={{
-              position: "fixed",
-              top: -4,
-              left: -4,
-              zIndex: 10,
-              backgroundColor: "#fff",
-              px: 2,
-              py: 2,
-              borderRadius: 1,
-              border: "2px solid var(--color-creamy-lighter)",
-              boxShadow: "0 0px 0px rgba(0,0,0,0.05)",
+              width: '100vw',
+              height: '85dvh',
+              minHeight: 650,
+              backgroundColor: "rgba(232, 197, 184, 0.2)", // behind the image
+              backgroundImage: `url(${BackgroundImg})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'local',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
             }}
           >
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: "bold",
-                fontFamily: "Roboto, sans-serif",
-                color: "var(--color-primary)",
-              }}
-            >
-              Glossed<span style={{ color: "#D9A5B3" }}>Up</span>
-            </Typography>
-          </Box>
-
-          {/* Centered Hero Content */}
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              px: 2,
-              flexDirection: "column",
-              gap: 3,
-            }}
-          >
-            <Typography
-              variant="h2"
-              sx={{
-                color: "#ffffff",
-                fontWeight: "bold",
-                textAlign: "center",
-                fontSize: {
-                  xs: "2.5rem",
-                  sm: "2.5rem",
-                  md: "3.5rem",
-                },
-              }}
-            >
-              UNDER CONSTRUCTION !
-            </Typography>
-
+            {/* Centered Hero Content */}
             <Box
               sx={{
-                backgroundColor: "rgba(255,255,255,0.65)",
-                padding: 4,
-                borderRadius: 0,
-                textAlign: "center",
-                width: isMobile ? "90%" : 500,
+                flexGrow: 1,
                 display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                px: 2,
                 flexDirection: "column",
-                gap: 2,
+                gap: 3,
               }}
             >
-              <Container maxWidth="md">
+              <Box
+                sx={{
+                  backgroundColor: "rgba(245,245,245,0.95)",
+                  padding: 4,
+                  borderRadius: 2,
+                  textAlign: "center",
+                  width: isMobile ? "90%" : 650,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                }}
+              >
                 <Typography
-                  variant="h6"
-                  fontWeight={600}
-                  color="var(--color-primary)"
-                  gutterBottom
+                  variant="h1"
+                  sx={{
+                    fontFamily: "'Playfair Display', serif", // full name for clarity
+                    fontSize: {
+                      xs: "2.75rem", // smaller screens: elegant, not overwhelming
+                      sm: "3.25rem",
+                      md: "4rem",    // large screens: presence without being bulky
+                    },
+                    fontWeight: 600, // slightly softer than "bold" (700)
+                    color: "var(--color-accent)", // elegant neutral
+                    letterSpacing: "-0.02em", // more refinement
+                    lineHeight: 1.15, // better vertical rhythm
+                    textAlign: "center",
+                    textTransform: "none", // avoid uppercase for a premium look
+                    textShadow: "0.25px 0.25px 0.5px rgba(0,0,0,0.05)", // subtle depth
+                  }}
                 >
                   Join our mailing list
                 </Typography>
-                <Typography
-                  variant="body2"
-                  color="var(--color-accent)"
-                  sx={{ fontSize: "16px" }}
-                >
-                  Be the first to know about new products, exclusive offers, and
-                  beauty tips.
-                </Typography>
-              </Container>
-              <form onSubmit={handleSubmit}>
-                <TextField
-                  fullWidth
-                  type="email"
-                  slotProps={{
-                    input: {
-                      autoComplete: "off",
-                    },
-                  }}
-                  required
-                  placeholder="Enter your email"
-                  variant="outlined"
-                  value={email}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                  sx={{
-                    backgroundColor: "#ffffff",
-                    input: { color: "#33271a" },
-                    transition: "transform 0.1s ease",
-                    "& .MuiOutlinedInput-root": {
+
+                <Container maxWidth="md">
+                  <Typography
+                    variant="body2"
+                    color="var(--color-secondary-text-beige)"
+                    sx={{ fontSize: "16px" }}
+                  >
+                    Be the first to know about new products, exclusive offers, and
+                    beauty tips.
+                  </Typography>
+                </Container>
+                <form onSubmit={handleSubmit}>
+                  <TextField
+                    fullWidth
+                    type="email"
+                    required
+                    placeholder="Enter your email"
+                    variant="outlined"
+                    value={email}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <Mail size={18} color="#33271a" />
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={{
+                      backgroundColor: "#ffffff",
+                      input: { color: "#33271a" },
+                      transition: "transform 0.1s ease",
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: 0.5,
+                        "& fieldset": {
+                          borderColor: "#d098a2",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "#d098a2",
+                        },
+                        "&.Mui-focused": {
+                          transform: "scale(1.0075)",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#d098a2",
+                        },
+                      },
+                      "& label": {
+                        color: "#33271a",
+                      },
+                      "& label.Mui-focused": {
+                        color: "#d098a2",
+                      },
+                    }}
+                  />
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                    sx={{
+                      mt: 2,
+                      backgroundColor: "#d098a2",
+                      color: "#ffffff",
+                      fontSize: "16px",
                       borderRadius: 0.5,
-                      "& fieldset": {
-                        borderColor: "#d098a2",
-                      },
-                      "&:hover fieldset": {
-                        borderColor: "#d098a2",
-                      },
-                      "&.Mui-focused": {
-                        transform: "scale(1.005)",
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#d098a2",
-                      },
-                    },
-                    "& label": {
-                      color: "#33271a",
-                    },
-                    "& label.Mui-focused": {
-                      color: "#d098a2",
-                    },
-                  }}
-                />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  fullWidth
-                  sx={{
-                    mt: 2,
-                    backgroundColor: "#d098a2",
-                    color: "#ffffff",
-                    fontSize: "16px",
-                    borderRadius: 0.5,
-                    textTransform: "none",
-                    boxShadow: "none",
-                    "&:hover": {
+                      textTransform: "none",
                       boxShadow: "none",
-                      backgroundColor: "#c07f8f",
-                    },
-                  }}
-                >
-                  Notify Me
-                </Button>
-              </form>
+                      "&:hover": {
+                        transform: "scale(1.0075)",
+                        boxShadow: "none",
+                        backgroundColor: "#c07f8f",
+                      },
+                    }}
+                  >
+                    Notify Me
+                  </Button>
+                </form>
+              </Box>
             </Box>
           </Box>
         </Box>
